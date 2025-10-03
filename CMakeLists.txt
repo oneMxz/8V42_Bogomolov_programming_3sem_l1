@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10.0)
 if(DEFINED VERSION_PROJECT)
     set(PROJECT_VERSION ${VERSION_PROJECT})
 else()
-    set(PROJECT_VERSION "0.1.0")
+    set(PROJECT_VERSION "0.0.0")
 endif()
 
 project(LAB1 VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
