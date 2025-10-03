@@ -21,6 +21,7 @@ endif()
 
 if(UNIX AND NOT APPLE)
 set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Max Bogomolov <bogomolovmaksim608@gmail.com>")
 endif()
 
 install(TARGETS LAB1 DESTINATION bin)
