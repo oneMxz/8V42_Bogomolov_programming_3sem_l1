@@ -1,27 +1,29 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(LAB1 VERSION 0.1.0 LANGUAGES C CXX)
 
+# Устанавливаем версию по умолчанию, но переопределяем если передана VERSION_PROJECT
 if(DEFINED VERSION_PROJECT)
-    add_definitions(-DVERSION_PROJECT="${VERSION_PROJECT}")
+    set(PROJECT_VERSION ${VERSION_PROJECT})
 else()
-    add_definitions(-DVERSION_PROJECT="0")
+    set(PROJECT_VERSION "0.1.0")
 endif()
+
+project(LAB1 VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
+
+# Убедимся что макрос тоже обновляется
+add_definitions(-DVERSION_PROJECT="${PROJECT_VERSION}")
 
 add_executable(LAB1 main.cpp)
 
-
-
 set(CPACK_PACKAGE_NAME "LAB1")
-
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
 
 if(WIN32)
-set(CPACK_GENERATOR "ZIP")
+    set(CPACK_GENERATOR "ZIP")
 endif()
 
 if(UNIX AND NOT APPLE)
-set(CPACK_GENERATOR "DEB")
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Max Bogomolov <bogomolovmaksim608@gmail.com>")
+    set(CPACK_GENERATOR "DEB")
+    set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Max Bogomolov <bogomolovmaksim608@gmail.com>")
 endif()
 
 install(TARGETS LAB1 DESTINATION bin)
